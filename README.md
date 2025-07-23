@@ -15,8 +15,22 @@ A small FastAPI server exposing Docker Swarm and optional Portainer management e
 
 3. Start the server:
    ```bash
-   uvicorn app.main:app --reload
-   ```
+uvicorn app.main:app --reload
+```
+
+## Docker
+
+Build the image:
+
+```bash
+docker build -t aidock .
+```
+
+Run the container (mount the Docker socket if controlling the host):
+
+```bash
+docker run -p 8000:8000 -v /var/run/docker.sock:/var/run/docker.sock aidock
+```
 
 ## Example `curl` commands
 
